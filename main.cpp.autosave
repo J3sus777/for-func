@@ -1,0 +1,301 @@
+/*10 Поправь плиз
+#include <iostream>
+int main()
+{
+    char str[80];
+    char* p[80];
+    int i;
+    std::cout << "Введите строку \nМаксимальный размер: " << sizeof(str) << std::endl;
+    std::cin >> str;
+    for (int i=0;i<80;++i)
+    {
+        p[i]=&str[80];
+        if (p[i]=="   " || p[i]=="  ")
+        {
+            p[i]==" ";
+    }
+    }
+    std::cout << p[i] << std::endl;
+    std::cout << str << std::endl;
+        return 0;
+}
+//---------------------------------------*/
+/*9
+#include <iostream>
+int main()
+{
+        int max = 0;
+        char str[80];
+        char* p = str;
+        char* j = p;
+        char* mx;
+        int count;
+    std::cout << "Введите строку \nМаксимальный размер: " << sizeof(str) << std::endl;
+    std::cin >> str;
+    while(*p != '\0')
+    {
+        count = 0;
+        j = str;
+        for (int i=0; i<sizeof(str)-1;i++)         {
+            if (((short)*p)==((short)*j))
+                count++;
+            if ((count >= max)&&(((short)*p)>47&&((short)*p)<58))
+                {max = count;mx = p;}
+            j++;
+        }
+        *p++;
+    }
+    if (max > 0)
+    std::cout << "Наиболее часто встречается число " << *mx << " ,встретилось " << max << " раз(а)" << std::endl;
+    else
+    std::cout << "В строке нет ни одного числа\n";
+    return 0;
+}
+//---------------------------------------*/
+/*
+#include <iostream>
+int main()
+{
+    int n;
+    std::cin>>n;
+    int a[n];
+    for (int i=0;i<n;++i)
+    {
+        a[i]=i;
+        std::cin>>a[n];
+    }
+    std::cout<<a[n]<<std::endl;
+    return 0;
+}
+//---------------------------------------*/
+/*8
+#include <iostream>
+#include <iomanip>
+#include <math.h>
+int min(int **doublemass,int a ,int b)
+{
+    int min=0;
+    min=doublemass[0][0];
+    for (int i=0;i<a;++i)
+    {
+        for (int j=0;j<b;++j)
+        {
+            if (doublemass[a][b]<min)
+            {
+              min=doublemass[i][j];
+            }
+        }
+    }
+    return min;
+}
+int max(int **doublemass,int a ,int b)
+{
+    int max=0;
+    max=doublemass[0][0];
+    for (int i=0;i<a;++i)
+    {
+        for (int j=0;j<b;++j)
+        {
+            if (doublemass[a][b]>max)
+            {
+              max=doublemass[i][j];
+            }
+        }
+    }
+    return max;
+}
+int sum(int ma,int mi)
+{
+    int sum=0;
+    sum=ma+mi;
+    return sum;
+}
+int main()
+{
+    setlocale(LC_ALL,"ru");
+    int a=0,b=0,ma=0,mi=0;
+    std::cout<<"Введите размер матрици"<<std::endl;
+    std::cin>>a;
+    std::cin>>b;
+    int **doublemass;
+    doublemass = new int  *[a];
+    for (int i = 0; i < a; i++) doublemass[i] = new int[b];
+
+    for (int i=0;i<a;++i)
+    {
+        std::cout<<"Заполняем"<<i+1<<"строку\n"<<std::endl;
+    for (int j=0;j<b;++j)
+    {
+        std::cin>>doublemass[i][j];
+    }
+    }
+    std::cout<<"  матрица\n";
+    for (int i=0;i<a;++i)
+    {
+    for (int j=0;j<b;++j)
+        std::cout << std::setw(4) << doublemass[i][j];
+    std::cout << std::endl;
+    }
+    std::cout <<doublemass[a][b];
+    std::cout << std::endl;
+    ma= max(*&doublemass,a,b);
+    mi=min(*&doublemass,a,b);
+    std::cout << "Максимальный элемент масива: " << max(*&doublemass,a,b) << std::endl;
+    std::cout << "Минимальный  элемент масива: " << min(*&doublemass,a,b) << std::endl;
+    std::cout << "Сумма" << sum(ma,mi) << std::endl;
+    for (int i = 0; i < a; i++) {
+        delete[]doublemass[i];
+    }
+    delete[]doublemass;
+    return 0;
+}
+//---------------------------------------*/
+/*7
+#include <iostream>
+#include <math.h>
+void foo(int a,int b,int c)
+{
+    int d,x=0;
+    double x1=0,x2=0;
+    d=pow(b,2)-(4*a*c);
+    std::cout<<d<<std::endl;
+    if (d>0)
+    {
+    x1=(-b+sqrt(d))/(2*a);
+    x2=(-b-sqrt(d))/(2*a);
+    std::cout<<"x1  "<<x1<<"  x2 "<<x2<<std::endl;
+    }
+    if(d=0)
+    {
+     x=-b/2*a;
+     std::cout<<"x "<<x<<std::endl;
+    }
+    if (d<0)
+    {
+        std::cout<<"d<0"<<std::endl;
+    }
+}
+int main()
+{
+    int a=0,b=0,c=0;
+    std::cout<<"Введите a: "<<std::endl;
+    std::cin>>a;
+    std::cout<<"Степень b: "<<std::endl;
+    std::cin>>b;
+    std::cout<<"Введите c: "<<std::endl;
+    std::cin>>c;
+    foo(a,b,c);
+    return 0;
+}
+//-------------------------------------*/
+/*5
+#include <iostream>
+#include <math.h>
+int foo(int n)
+{
+  int i;
+  int f;
+  f = 1;
+  for (i = 1; i <=n; i++) {
+    f = f * i;
+  }
+  return f;
+}
+int main()
+{
+  int n;
+std::cin >> n;
+std::cout<<foo(n)<<std::endl;
+std::cout<<std::endl;
+std::cout<<"fact chisla:0!=0 "<<std::endl;
+std::cout<<"fact chisla:1!=1 "<<std::endl;
+return 0;
+}
+//-------------------------------------*/
+/*4
+#include <iostream>
+int foo(int a,int b)
+{
+    double x;
+    return x=a*b/100;
+}
+int main()
+{
+    int a=0,b=0;
+    std::cout<<"Введите %: "<<std::endl;
+    std::cin>>a;
+    std::cout<<"От числа: "<<std::endl;
+    std::cin>>b;
+    std::cout<<foo(a,b)<<std::endl;
+    return 0;
+}
+//-------------------------------------*/
+/*3
+#include <iostream>
+#include <math.h>
+int foo(int a,int b)
+{
+    double v=0;
+    return v=pow(a,b);
+}
+int main()
+{
+    int a=0,b=0;
+    std::cout<<"Введите a: "<<std::endl;
+    std::cin>>a;
+    std::cout<<"Степень b: "<<std::endl;
+    std::cin>>b;
+    std::cout<<foo(a,b)<<std::endl;
+    return 0;
+}
+//-------------------------------------*/
+/*2
+#include <iostream>
+void foo(int a,int b)
+{
+    if (a>b)
+    {
+        std::cout<<">"<<std::endl;
+    }
+    if (a<b)
+    {
+        std::cout<<"<"<<std::endl;;
+    }
+    if(a==b)
+    {
+        std::cout<<"="<<std::endl;
+    }
+    return 0;
+}
+int main()
+{
+    int a=0,b=0;
+    std::cout<<"Введите a: "<<std::endl;
+    std::cin>>a;
+    std::cout<<"Введите b: "<<std::endl;
+    std::cin>>b;
+    foo(a,b);
+    return 0;
+}
+//-------------------------------------*/
+/*1
+#include <iostream>
+#include <math.h>
+int foo(double r,double h)
+{
+ double v=0;
+ const double PI = 3.14;
+ return v=PI*(pow(r,2)*h);
+}
+int main()
+{
+    setlocale(LC_ALL,"ru");
+    double r=0,h=0;
+std::cout<<"Введите R: "<<std::endl;
+std::cin>>r;
+std::cout<<"Введите H: "<<std::endl;
+std::cin>>h;
+std::cout<<foo(r,h)<<std::endl;
+    return 0;
+}
+//-------------------------------------*/
